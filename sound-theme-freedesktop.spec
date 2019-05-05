@@ -4,10 +4,10 @@
 #
 Name     : sound-theme-freedesktop
 Version  : 0.8
-Release  : 1
+Release  : 2
 URL      : http://people.freedesktop.org/~mccann/dist/sound-theme-freedesktop-0.8.tar.bz2
 Source0  : http://people.freedesktop.org/~mccann/dist/sound-theme-freedesktop-0.8.tar.bz2
-Summary  : No detailed summary available
+Summary  : Freedesktop sound theme
 Group    : Development/Tools
 License  : CC-BY-3.0 CC-BY-SA-4.0 GPL-2.0
 Requires: sound-theme-freedesktop-data = %{version}-%{release}
@@ -38,7 +38,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1543946037
+export SOURCE_DATE_EPOCH=1557099503
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static
 make  %{?_smp_mflags}
 
@@ -50,7 +57,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1543946037
+export SOURCE_DATE_EPOCH=1557099503
 rm -rf %{buildroot}
 %make_install
 
